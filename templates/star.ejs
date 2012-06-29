@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<style type='text/css'>
+* {
+  border:0;
+  margin:0;
+  padding:0;
+}
+html, body {
+  height:100%;
+  width:100%;
+  overflow:hidden;
+}
+input[type=submit] {
+  background:0;
+  border:none;
+  font-size: 24px;
+  cursor:pointer;
+  cursor:hand;
+  line-height:24px;
+}
+
+</style>
+<body>
+  <form method=post action="/star/<%= package %>#posted">
+    <input type=hidden value="<%= star ? 0 : 1 %>" name=star>
+    <input type=submit value="<%= star ? "★" : "☆" %>">
+  </form>
+<script>
+  if (location.hash === "#posted") {
+    location.replace('/star/<%= package %>')
+  }
+</script>
+</body>
+</html>
+
+

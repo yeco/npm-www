@@ -21,7 +21,13 @@
       </header>
 
       <div id="package">
-        <h1><%= package.name %></h1>
+        <h1>
+          <!-- todo: make this clickable -->
+          <% if (star !== undefined) { %>
+            <span class=star><%= star ? "★" : "☆" %></span>
+          <% } %>
+          <%= package.name %>
+        </h1>
         <p class="description"><%= package.description || 'No description' %></p>
 
         <table class="metadata">

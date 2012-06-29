@@ -37,9 +37,11 @@ router.addRoute("/forgot/:token", forgot)
 router.addRoute("/about", require("./routes/about.js"))
 
 // The package details page
-// Definitely ought to be its own module.
 var packagePage = require("./routes/package-page.js")
 router.addRoute("/package/:name/:version", packagePage)
 router.addRoute("/package/:name", packagePage)
+
+// star/unstar a package
+router.addRoute('/star/:package', require('./routes/star.js'))
 
 router.addRoute("/keyword/:keyword", require("./routes/keyword.js"))
