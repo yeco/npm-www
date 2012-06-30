@@ -12,7 +12,7 @@
       <% if (profile.avatar) { %>
       <img src="<%= profile.avatar %>" class="avatar">
       <% } %>
-      <a href="/profile"><%= profile.fullname || profile.name %></a>
+      <a href="/profile" id="profile-name-link"><%= profile.fullname || profile.name %></a>
       <p class=profsub>
         <a class=profsub href=/profile-edit>Edit Profile</a>
         <a class=profsub href=/logout>Log out</a>
