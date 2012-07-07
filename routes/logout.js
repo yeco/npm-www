@@ -7,6 +7,7 @@ module.exports = function (req, res) {
     // delete the couchdb session, if we have one.
     req.session.del('name')
     req.session.del('error')
+    req.session.del('profile')
     res.cookies.set('name', '')
     req.session.del('myprofile', function (er) {
       if (er) return res.error(er)
