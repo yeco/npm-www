@@ -18,7 +18,7 @@ function keyword (req, res) {
       content: "keyword.ejs",
       packages: m.keyword,
       keyword: kw,
-      profile: m.myprofile
+      myprofile: m.myprofile
     };
     res.template('layout.ejs', locals)
   })

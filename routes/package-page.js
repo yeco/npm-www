@@ -12,7 +12,7 @@ function packagePage (req, res) {
     var locals = {
       content: "package-page.ejs",
       package: m.package,
-      profile: m.myprofile
+      myprofile: m.myprofile
     }
     res.template("layout.ejs", locals)
   })

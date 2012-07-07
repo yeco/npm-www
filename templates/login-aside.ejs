@@ -1,6 +1,6 @@
 <aside class="login">
   <%
-  if (!profile.isSelf) {
+  if (!myprofile) {
     %>
     <div class=profile>
       <img src="https://secure.gravatar.com/avatar/avatar.jpg?s=50&d=mm" class="avatar"> <a href=/signup>Create Account</a> | <a href=/login>Login</a>
@@ -9,10 +9,10 @@
   } else {
     %>
     <div class="profile">
-      <% if (profile.avatar) { %>
-      <img src="<%= profile.avatar %>" class="avatar">
+      <% if (myprofile.avatar) { %>
+      <img src="<%= myprofile.avatar %>" class="avatar">
       <% } %>
-      <a href="/profile"><%= profile.fullname || profile.name %></a>
+      <a href="/profile"><%= myprofile.fullname || myprofile.name %></a>
       <p class=profsub>
         <a class=profsub href=/profile-edit>Edit Profile</a>
         <a class=profsub href=/logout>Log out</a>

@@ -35,7 +35,7 @@ function showProfile (req, res, profile) {
 
   var td = { content: "profile.ejs"
            , profile: profile
-           , self: req.model.myprofile
+           , myprofile: req.model.myprofile
            , fields: config.profileFields }
   res.template('layout.ejs', td)
 }

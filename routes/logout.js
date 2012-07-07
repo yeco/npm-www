@@ -8,7 +8,7 @@ module.exports = function (req, res) {
     req.session.del('name')
     req.session.del('error')
     res.cookies.set('name', '')
-    req.session.del('profile', function (er) {
+    req.session.del('myprofile', function (er) {
       if (er) return res.error(er)
       req.session.get('done', function (er, done) {
         res.redirect(done || '/')

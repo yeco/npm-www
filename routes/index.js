@@ -10,7 +10,7 @@ function indexPage (req, res) {
     var locals = {
       content: "index.ejs",
       index: m.index,
-      profile: m.myprofile
+      myprofile: m.myprofile
     }
     res.template("layout.ejs", locals)
   })

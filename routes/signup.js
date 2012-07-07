@@ -15,7 +15,7 @@ function show (req, res) {
     if (er) return res.error(er);
     res.template('layout.ejs', {
       content: 'signup-form.ejs',
-      profile: m.myprofile,
+      myprofile: m.myprofile,
       error: null,
       data: null
     })

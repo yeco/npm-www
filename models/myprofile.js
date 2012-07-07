@@ -28,7 +28,7 @@ function myprofile (req, required, cb) {
       var gr = data.email ? 'retro' : 'mm'
       data.avatar = gravatar(data.email || '', {s:50, d:gr}, true)
 
-      req.session.set('profile', data)
+      req.session.set('myprofile', data)
       return cb(null, data)
     })
   })
