@@ -58,7 +58,7 @@ function handle (req, res) {
         return res.template('layout.ejs', td, 400)
       }
 
-      req.session.set('profile', data, function (er) {
+      req.session.set('myprofile', data, function (er) {
         if (er) return res.error(er, 500)
         // it worked!  now let them add some details
         return res.redirect('/profile-edit')

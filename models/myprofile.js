@@ -4,7 +4,7 @@ var gravatar = require('gravatar').url
 
 function myprofile (req, required, cb) {
   if (typeof required === 'function') cb = required, required = false
-  req.session.get('profile', function (er, data) {
+  req.session.get('myprofile', function (er, data) {
     if (!required && er) er = null
     if (data) {
       var gr = data.email ? 'retro' : 'mm'

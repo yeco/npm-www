@@ -70,7 +70,7 @@ function saveThenShow (data, req, res) {
       // also fetch the updated profile in the background
       // and save into the redis session
       req.couch.get(pu, function (er, cr, data) {
-        res.session.set('profile', data)
+        res.session.set('myprofile', data)
         res.redirect('/profile')
       })
     })
@@ -91,7 +91,7 @@ function show (req, res) {
     }
     var locals = {
       content: "profile-edit.ejs",
-      profile: profile,
+      myprofile: profile,
       fields: config.profileFields
     }
     res.template("layout.ejs", locals)

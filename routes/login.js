@@ -52,7 +52,7 @@ function handleForm (req, res) {
           return res.error(er, cr && cr.statusCode)
         }
 
-        req.session.set("profile", data)
+        req.session.set("myprofile", data)
 
         // just a convenience.
         res.cookies.set('name', data.name)

@@ -3,8 +3,8 @@
 <p><a href=/password>Change your Password</a></p>
 
 <form method=post action=/profile-edit>
-  <input type=hidden name=_id value="<%= profile._id %>">
-  <input type=hidden name=name value="<%= profile.name %>">
+  <input type=hidden name=_id value="<%= myprofile._id %>">
+  <input type=hidden name=name value="<%= myprofile.name %>">
   <table width=100%>
 <%
 Object.keys(fields).forEach(function (f) {
@@ -12,7 +12,7 @@ Object.keys(fields).forEach(function (f) {
   <tr>
     <th><label for="<%= f %>"><%= fields[f] %></label></th>
     <td><input style="display:block;width:100%;"
-      id="<%= f %>" name="<%= f %>" value="<%= profile[f] || '' %>"></td>
+      id="<%= f %>" name="<%= f %>" value="<%= myprofile[f] || '' %>"></td>
   </tr>
   <%
 })
@@ -22,4 +22,4 @@ Object.keys(fields).forEach(function (f) {
 <input type=submit value=Save>
 </form>
 
-<a href='/logout/?done=/profile/<%= profile.name %>'>log out</a>
+<a href='/logout/?done=/profile/<%= myprofile.name %>'>log out</a>

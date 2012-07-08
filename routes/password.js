@@ -15,7 +15,10 @@ function password (req, res) {
 
 function show (req, res) {
   login(req, res, function () {
-    res.template('layout.ejs', {content: 'password.ejs', profile: req.profile, error: null})
+    res.template('layout.ejs',
+                 { content: 'password.ejs',
+                   profile: req.profile,
+                   error: null })
   })
 }
 
@@ -84,17 +87,17 @@ function handleData (req, res, data) {
     req.couch.get('/_users/' + prof._id, function (er, cr, prof) {
       // can this ever fail?  it definitely shouldn't.
       if (er || cr.statusCode !== 200) {
-        req.session.del('profile')
+        req.session.del('myprofile')
         return res.error(er, cr.statusCode)
       }
-      req.session.set('profile', prof)
+      req.session.set('myprofile', prof)
       res.redirect('/profile')
     })
   })
 }
 
 function login (req, res, cb) {
-  req.session.get('profile', function (er, prof) {
+  req.session.get('myprofile', function (er, prof) {
     req.profile = prof
     if (er) return res.error(er)
     if (!prof || !prof.name) {
