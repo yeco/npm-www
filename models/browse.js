@@ -3,7 +3,7 @@ var qs = require('querystring')
 
 var LRU = require('lru-cache')
 var cache = new LRU({
-  max: 10000,
+  max: 1000,
   length: function (n) { return n.length },
   maxAge: 1000 * 60
 })
@@ -32,7 +32,7 @@ var groupLevel = {
 // the group level when there's an arg
 var groupLevelArg = {
   keyword: 3,
-  author: 3,
+  author: 4,
   depended: 3,
   star: 3,
   userstar: 3
@@ -155,6 +155,22 @@ function transform (type, arg, data, skip, limit) {
     return []
   }
 
+  // sort by recently updated
+  if (arg && type === 'author') {
+    data.rows = data.rows.sort(function (a, b) {
+      var bb = Date.parse(b.key[3])
+      var aa = Date.parse(a.key[3])
+      if (bb && aa)
+        return bb - aa
+      else if (bb)
+        return 1
+      else if (aa)
+        return -1
+      else
+        return 0
+    })
+  }
+
   data = data.rows.map(function (row) {
     var fn = (arg ? transformKeyArg : transformKey)[type]
     return fn(row.key, row.value, type)
@@ -165,7 +181,7 @@ function transform (type, arg, data, skip, limit) {
     data = data.sort(function (a, b) {
       return a.value === b.value ? (
         a.name === b.name ? 0 : a.name < b.name ? -1 : 1
-      ) : a.value > b.value ? -1 : 1
+      ) : b.value - a.value
     }).slice(skip, skip + limit)
   }
 
